@@ -1,26 +1,27 @@
 Retail Data Warehouse ETL Pipeline
-📌 Overview
 
-This project demonstrates a complete end-to-end ETL pipeline built using Apache Airflow and PostgreSQL.
+A production-ready ETL pipeline built using Apache Airflow, PostgreSQL, and Docker to extract, transform, validate, and load retail sales data into a data warehouse environment.
 
-The pipeline extracts retail sales data from CSV files, transforms and validates the data, then loads it into a PostgreSQL Data Warehouse using a modular and production-style architecture.
+Overview
 
-The workflow is orchestrated with Airflow DAGs and containerized using Docker for easy local deployment and scalability.
+This project demonstrates a complete ETL workflow orchestrated with Apache Airflow.
 
-✨ Features
-Automated ETL orchestration with Airflow
-CSV-based retail sales ingestion
-Data cleaning and transformation
-Data validation before loading
-PostgreSQL Data Warehouse integration
+The pipeline extracts retail sales data from CSV files, processes and validates the data, then loads it into PostgreSQL using a modular and scalable architecture.
+
+The project is designed to simulate real-world Data Engineering practices including workflow orchestration, structured logging, modular ETL development, and containerized deployment.
+
+Features
+ETL orchestration using Apache Airflow
+CSV data ingestion
+Data transformation and validation
+PostgreSQL data warehouse integration
 Modular ETL architecture
 Structured logging and monitoring
-Dockerized environment
-Astro CLI compatible
-Scalable DAG design
+Dockerized development environment
+Astro CLI support
 Retry handling for failed tasks
-Production-style folder structure
-🏗️ Pipeline Architecture
+Scalable DAG design
+Pipeline Architecture
 CSV Dataset
      │
      ▼
@@ -37,16 +38,16 @@ Load into PostgreSQL
      │
      ▼
 Retail Data Warehouse
-🛠️ Tech Stack
+Tech Stack
 Layer	Technology
 Orchestration	Apache Airflow 2.x
 Runtime	Astro CLI
 Database	PostgreSQL
-Language	Python
-Containerization	Docker
+Programming Language	Python
 Data Processing	Pandas
-Logging	Python Logging
-📂 Project Structure
+Containerization	Docker
+Monitoring	Python Logging
+Project Structure
 retail-data-warehouse/
 │
 ├── dags/
@@ -61,20 +62,19 @@ retail-data-warehouse/
 │   ├── validate.py
 │   └── load_postgres.py
 │
-├── screenshots/
-│
 ├── tests/
+├── screenshots/
 │
 ├── requirements.txt
 ├── Dockerfile
 ├── README.md
 └── .env
-⚡ Getting Started
-1️⃣ Clone the Repository
+Getting Started
+1. Clone the Repository
 git clone <your-repository-link>
 
 cd retail-data-warehouse
-2️⃣ Configure Environment Variables
+2. Configure Environment Variables
 
 Create a .env file:
 
@@ -83,7 +83,7 @@ POSTGRES_PORT=5432
 POSTGRES_DB=retail_dw
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
-3️⃣ Start Airflow
+3. Start Airflow
 astro dev start
 
 Airflow UI:
@@ -93,7 +93,7 @@ http://localhost:8080
 Default credentials:
 
 admin / admin
-4️⃣ Configure PostgreSQL
+4. Configure PostgreSQL
 
 Enter the PostgreSQL container:
 
@@ -116,13 +116,13 @@ GRANT ALL PRIVILEGES ON DATABASE retail_dw TO airflow;
 Reconnect using:
 
 psql -U airflow -d retail_dw
-5️⃣ Add Airflow Connection
+5. Add Airflow Connection
 
 Inside the Airflow UI:
 
 Admin → Connections
 
-Create a PostgreSQL connection:
+Create a PostgreSQL connection using the following values:
 
 Field	Value
 Conn ID	postgres_default
@@ -132,9 +132,9 @@ Port	5432
 Schema	retail_dw
 Login	postgres
 Password	postgres
-6️⃣ Trigger the DAG
+6. Trigger the DAG
 astro dev run dags trigger retail_etl_dag
-🗄️ Database Schema
+Database Schema
 dim_products
 
 Stores product metadata.
@@ -144,7 +144,9 @@ product_id	INT
 product_name	VARCHAR
 category	VARCHAR
 price	NUMERIC
-Example
+
+Example:
+
 1 | Laptop     | Electronics | 15000
 2 | Headphones | Electronics | 1200
 3 | Chair      | Furniture   | 850
@@ -159,65 +161,63 @@ customer_id	INT
 quantity	INT
 total_amount	NUMERIC
 sale_date	DATE
-Example
+
+Example:
+
 1 | 101 | 1001 | 2 | 3000 | 2025-01-01
 2 | 102 | 1002 | 1 | 1200 | 2025-01-02
 3 | 103 | 1003 | 5 | 4250 | 2025-01-03
-🔄 ETL Workflow
-
-The pipeline follows these stages:
-
+ETL Workflow
 Extract
 Read raw retail sales CSV files
 Load data into Pandas DataFrames
 Transform
-Clean missing values
+Handle missing values
 Convert data types
-Standardize columns
-Calculate metrics
+Standardize column formats
+Calculate required metrics
 Validate
-Check null values
-Detect duplicates
+Check for null values
+Detect duplicate records
 Validate schema consistency
 Load
 Insert transformed data into PostgreSQL
-Maintain warehouse integrity
-📊 Monitoring & Logging
+Maintain data warehouse integrity
+Monitoring and Logging
 
 Each Airflow task logs:
 
-Extracted records count
+Extracted record counts
 Transformation steps
-Validation failures
+Validation results
 Loaded row counts
 Error tracebacks
 DAG execution status
 
-Logs can be monitored from:
+Logs can be monitored through:
 
 Airflow Task Logs
 Docker Container Logs
-🚀 Future Improvements
+Future Improvements
 Incremental loading support
 REST API ingestion
 Kafka streaming integration
-Data quality alerts
+Automated alerts and notifications
 CI/CD pipeline integration
-Email notifications
-Dashboard visualization with Tableau or Microsoft Power BI
-📈 Learning Outcomes
+Dashboard visualization using Tableau or Microsoft Power BI
+Learning Outcomes
 
-Through this project, the following concepts were applied:
+This project demonstrates practical experience with:
 
-ETL Pipeline Design
+ETL Pipeline Development
 Data Warehousing
 Workflow Orchestration
-Airflow DAG Development
+Airflow DAG Design
 PostgreSQL Integration
 Docker Containerization
 Data Validation Techniques
 Production-style Data Engineering Practices
-👩‍💻 Author
+Author
 
 Esraa Abdelazeem
 Data Engineer | Data Analyst | AI Enthusiast
